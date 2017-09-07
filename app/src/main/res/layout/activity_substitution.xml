@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#FFB0B1"
+              android:weightSum="2"
+              >
+
+    <!-- Home Team -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#FFBBCC"
+        android:orientation="vertical"
+        >
+
+        <include
+            android:id="@+id/layout_home_uniform1"
+            layout="@layout/layout_uniform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            />
+
+        <include
+            android:id="@+id/layout_home_uniform2"
+            layout="@layout/layout_uniform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            />
+
+        <include
+            android:id="@+id/layout_home_uniform3"
+            layout="@layout/layout_uniform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+
+            <include
+                android:id="@+id/layout_home_uniform4"
+                layout="@layout/layout_uniform"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/chair"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <!-- Away Team -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#CCBBFF"
+        android:orientation="vertical"
+        >
+
+        <include
+            android:id="@+id/layout_home_uniform1"
+            layout="@layout/layout_uniform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            />
+
+        <include
+            android:id="@+id/layout_away_uniform2"
+            layout="@layout/layout_uniform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            />
+
+        <include
+            android:id="@+id/layout_away_uniform3"
+            layout="@layout/layout_uniform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
+
+            <include
+                android:id="@+id/layout_away_uniform4"
+                layout="@layout/layout_uniform"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/chair"
+                />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
