@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.hoopick.hoopicktest.R;
 import com.hoopick.hoopicktest.view.lineup.ActivityLineup;
+import com.hoopick.hoopicktest.view.login.ActivityLogin;
 import com.hoopick.hoopicktest.view.settings.ActivitySettings;
 
 public class ActivityMain extends AppCompatActivity {
@@ -38,7 +39,14 @@ public class ActivityMain extends AppCompatActivity {
             }
         });
 
-
+        findViewById(R.id.login_Btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent lIntent = new Intent(ActivityMain.this, ActivityLogin.class);
+                lIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                ActivityMain.this.startActivity(lIntent);
+            }
+        });
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         getSupportActionBar().hide();

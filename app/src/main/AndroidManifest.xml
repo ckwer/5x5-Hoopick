@@ -30,6 +30,14 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".view.login.ActivityLogin"
+            >
+        </activity>
+        <activity
+            android:name=".view.login.RegisterActivity"
+            >
+        </activity>
 
         <activity
             android:name=".view.lineup.ActivityLineup"
