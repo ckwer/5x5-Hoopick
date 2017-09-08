@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/layout_Top"
         android:layout_width="match_parent"
-        android:layout_height="66dp"
+        android:layout_height="106dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
@@ -34,14 +34,14 @@
 
                 <Button
                     android:id="@+id/button_undo"
-                    android:layout_width="75dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:text="UNDO"
                     android:textSize="8sp" />
 
                 <LinearLayout
                     android:id="@+id/layout_home_team_foul"
-                    android:layout_width="83dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -63,7 +63,7 @@
 
                 <LinearLayout
                     android:id="@+id/layout_shot_time"
-                    android:layout_width="58dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="3.52"
                     android:orientation="vertical">
@@ -95,11 +95,13 @@
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_toEndOf="@+id/textView3"
+                android:layout_toRightOf="@+id/textView3">
 
                 <LinearLayout
                     android:id="@+id/layout_game_time"
-                    android:layout_width="75dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -122,7 +124,7 @@
 
                 <LinearLayout
                     android:id="@+id/layout_away_team_foul"
-                    android:layout_width="113dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
@@ -279,9 +281,72 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/layout_Bottom"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
+
+        <RelativeLayout
+            android:id="@+id/layout_court"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/layout_home_player1"
+            android:layout_toRightOf="@+id/layout_home_player1">
+
+            <HorizontalScrollView
+                android:id="@+id/scroll_Court"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/image_court"
+                        android:layout_width="660dp"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/background_light"
+                        android:scaleType="fitXY"
+                        app:srcCompat="@drawable/basketball_court_only" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/image_event"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_notifications_black_24dp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/textDebugLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="50dp"
+                android:text="abc"
+                android:textColor="#0000FF" />
+
+            <TextView
+                android:id="@+id/textDebugRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="50dp"
+                android:text="abc"
+                android:textColor="#0000FF" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
     <LinearLayout
-        android:layout_width="625dp"
-        android:layout_height="73dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="1">
 
@@ -320,14 +385,14 @@
 
         <RelativeLayout
             android:id="@+id/layout_away_player1"
-            android:layout_width="341dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentTop="true"
             android:layout_toLeftOf="@+id/textDebugRight"
             android:layout_toStartOf="@+id/textDebugRight"
+            android:layout_weight="0.71"
             android:background="@android:color/background_light"
-            android:gravity="right"
-            android:layout_weight="0.71">
+            android:gravity="right">
 
             <include
                 android:id="@+id/layout_away_uniform1"
@@ -345,70 +410,5 @@
 
         </RelativeLayout>
     </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/layout_Bottom"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <RelativeLayout
-            android:id="@+id/layout_court"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/layout_home_player1"
-            android:layout_toRightOf="@+id/layout_home_player1">
-
-            <HorizontalScrollView
-                android:id="@+id/scroll_Court"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-
-                    >
-
-                    <ImageView
-                        android:id="@+id/image_court"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@android:color/background_light"
-                        app:srcCompat="@drawable/test3" />
-                </LinearLayout>
-            </HorizontalScrollView>
-
-            <ImageView
-                android:id="@+id/image_event"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_notifications_black_24dp"
-                android:visibility="visible" />
-
-            <TextView
-                android:id="@+id/textDebugLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="50dp"
-                android:text="abc"
-                android:textColor="#0000FF" />
-
-            <TextView
-                android:id="@+id/textDebugRight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="50dp"
-                android:text="abc"
-                android:textColor="#0000FF" />
-
-        </RelativeLayout>
-
-    </RelativeLayout>
 
 </LinearLayout>
