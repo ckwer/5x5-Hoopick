@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="#f2f2f2"
-    android:orientation="vertical">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#cc000000"
+    android:gravity="center"
+    app:layout_collapseParallaxMultiplier="1.0">
 
     <TextView
         android:id="@+id/text_title"
@@ -27,42 +30,58 @@
         android:textColor="#000000"
         android:textSize="16sp" />
 
-    <LinearLayout
-        android:layout_width="692dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/button_shot_made"
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/btn_goal_click"  />
-
-        <TextView
-            android:id="@+id/text_shot_foul"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="V"
-            android:textSize="35sp" />
-
-        <ImageButton
-            android:id="@+id/button_shot_foul"
-            android:layout_width="139dp"
             android:layout_height="match_parent"
-            android:background="@drawable/btn_foul_click"  />
-
-        <ImageButton
-            android:id="@+id/button_shot_miss"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/btn_fail_click"  />
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/button_shot_miss"
+                android:layout_width="180dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn_fail_click"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/button_shot_made"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="165dp"
+                android:layout_toRightOf="@+id/button_shot_miss"
+                android:layout_weight="1"
+                android:background="@drawable/btn_goal_click"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/text_shot_foul"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="V"
+                android:textSize="35sp"
+                android:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/button_shot_foul"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:layout_marginRight="0dp"
+                android:layout_marginTop="130dp"
+                android:background="@drawable/btn_foul_click"
+                android:visibility="visible"
+                tools:visibility="visible" />
+        </FrameLayout>
+
+    </RelativeLayout>
 
 
 </LinearLayout>
