@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -89,6 +90,8 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     private TextView mTextDebugLeft;
     private TextView mTextDebugRight;
     private TextView mTextEndQuater;
+    private Button mHomeScoreButton;
+    private Button mAwayScoreButton;
 
     private View[][] mViewPlayer = new View[MAX_TEAM][MAX_PLAYER];
 
@@ -108,6 +111,16 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
         bindLayout();
 
         initLayout();
+
+        ScoreClick();
+
+//        //ActivityScore NumberPikcer (점수 수정화면) 값 받아오기
+//        Intent intent = getIntent();
+//        String no = intent.getStringExtra("home_score");
+//        String no1 = intent.getStringExtra("away_score");
+//        mHomeScoreButton.setText(no);
+//        mAwayScoreButton.setText(no1);
+
     }
 
 
@@ -140,6 +153,8 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
         mImageCourt = (ImageView) findViewById(R.id.image_court);
         mImageEvent = (ImageView) findViewById(R.id.image_event);
         mScrollCourt = (HorizontalScrollView) findViewById(R.id.scroll_Court);
+        mHomeScoreButton = (Button) findViewById(R.id.button_home_score);
+        mAwayScoreButton = (Button) findViewById(R.id.button_away_score);
 
         mTextDebugLeft = (TextView) findViewById(R.id.textDebugLeft);
         mTextDebugRight = (TextView) findViewById(R.id.textDebugRight);
@@ -182,8 +197,9 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
         lTextShotTime.setText(String.format("%d", HpGameManager.get().getTimer().getmMaxShotClockSec()));
 
         // Score
-        ((TextView)findViewById(R.id.text_home_score)).setText("0");
-        ((TextView)findViewById(R.id.text_away_score)).setText("0");
+        ((Button)findViewById(R.id.button_home_score)).setText("0");
+        ((Button)findViewById(R.id.button_away_score)).setText("0");
+
 
         // Foul
         ((TextView)findViewById(R.id.text_home_foul)).setText("0");
@@ -198,6 +214,37 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
 
     }
+
+    //HomeScoroe_button or AwayScore_button 클릭 (점수조정 화면)
+    private void ScoreClick(){
+        mHomeScoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent lIntent = new Intent(ActivityPlayBall.this,ActivityScore.class);
+                lIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                String home = mHomeScoreButton.getText().toString();
+                String away = mAwayScoreButton.getText().toString();
+                //ActivityScore에 ScorePicker에 값 넘겨주기
+                lIntent.putExtra("home_picker",Integer.parseInt(home));
+                lIntent.putExtra("away_picker",Integer.parseInt(away));
+                ActivityPlayBall.this.startActivity(lIntent);
+            }
+        });
+        mAwayScoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent lIntent = new Intent(ActivityPlayBall.this,ActivityScore.class);
+                lIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                String home = mHomeScoreButton.getText().toString();
+                String away = mAwayScoreButton.getText().toString();
+                //ActivityScore에 ScorePicker에 값 넘겨주기
+                lIntent.putExtra("home_picker",Integer.parseInt(home));
+                lIntent.putExtra("away_picker",Integer.parseInt(away));
+                ActivityPlayBall.this.startActivity(lIntent);
+            }
+        });
+    }
+
 
 
     @Override
@@ -803,13 +850,11 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     }
 
     private OnTouchListener  mOnTouchCourt = new View.OnTouchListener() {
-
-
         @Override
         public boolean onTouch(View view, MotionEvent event) {
             final HpPlayer lPlayerSelect = HpGameManager.get().getBall().getGrabbedPlayer();
 
-              if(lPlayerSelect == null) {
+            if(lPlayerSelect == null) {
                 Toast.makeText(getApplicationContext(), "select a shot player.", Toast.LENGTH_SHORT).show();
                 return true;
 
@@ -854,10 +899,10 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                     doShot(lPointScore, lPosX, lPosY, lDistance);
                 }
 
-                }
+            }
 
 
-             else if (event.getAction() == MotionEvent.ACTION_MOVE) {
+            else if (event.getAction() == MotionEvent.ACTION_MOVE) {
 
                 /*
                 float lDelX = event.getX() - mMoveX;
@@ -921,7 +966,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                             String AwayTeamSelect = HpGameManager.get().getTeamAway().getName();
                             final HpPlayer lPlayerSelect = HpGameManager.get().getBall().getGrabbedPlayer();
                             if(lPlayerSelect.getName() == HomeTeamSelect ) {
-                                mScrollCourt.smoothScrollTo(500, 0);
+                                mScrollCourt.smoothScrollTo(1500, 0);
                                 mScrollCourt.setOnTouchListener(new OnTouchListener() {
                                     @Override
                                     public boolean onTouch(View v, MotionEvent event) {
@@ -998,8 +1043,8 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     public void onShotClockResult2() {
         Log.d("Hoopick", "onShotClockResult");
 
-            MediaPlayer lMediaPlayer = MediaPlayer.create(getContext(), R.raw.nbnsound);
-            lMediaPlayer.start();
+        MediaPlayer lMediaPlayer = MediaPlayer.create(getContext(), R.raw.nbnsound);
+        lMediaPlayer.start();
 
     }
 
@@ -1205,9 +1250,13 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
     @Override
     public void onScoreResult(int aHomeScore, int aAwayScore) {
-        ((TextView)findViewById(R.id.text_home_score)).setText("" + aHomeScore);
-        ((TextView)findViewById(R.id.text_away_score)).setText("" + aAwayScore);
+        ((Button)findViewById(R.id.button_home_score)).setText("" + aHomeScore);
+        ((Button)findViewById(R.id.button_away_score)).setText("" + aAwayScore);
+
+
     }
+
+
 
     @Override
     public void onShotResult(String aMadeOrMiss, int aPointScore, String aPlayerShot, String aPlayerAssist) {

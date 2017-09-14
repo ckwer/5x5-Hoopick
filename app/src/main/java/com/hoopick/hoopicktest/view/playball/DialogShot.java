@@ -8,12 +8,15 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hoopick.hoopicktest.R;
+
+import static android.R.attr.dial;
 
 /**
  * Created by junhyeok on 2017. 8. 17..
@@ -37,6 +40,7 @@ public class DialogShot extends Dialog implements android.view.View.OnClickListe
         super(context);
         mTitle = aTitle;
         mDesc = aDesc;
+
     }
 
     public String getDesc() {
@@ -51,6 +55,8 @@ public class DialogShot extends Dialog implements android.view.View.OnClickListe
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_shot);
+        getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+
 
         findViewById(R.id.button_shot_made).setOnClickListener(this);
         findViewById(R.id.button_shot_miss).setOnClickListener(this);
@@ -59,6 +65,13 @@ public class DialogShot extends Dialog implements android.view.View.OnClickListe
 
         ((TextView)findViewById(R.id.text_title)).setText(mTitle);
         ((TextView)findViewById(R.id.text_desc)).setText(mDesc);
+
+
+
+
+
+
+
 
     }
 
@@ -93,6 +106,7 @@ public class DialogShot extends Dialog implements android.view.View.OnClickListe
 
             case R.id.button_shot_made: {
                 mOnClickShotListner.OnClickShot(SHOT_MADE);
+
                 break;
             }
 

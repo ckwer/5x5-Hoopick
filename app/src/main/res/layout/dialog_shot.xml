@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#cc000000"
     android:gravity="center"
+    android:orientation="vertical"
     app:layout_collapseParallaxMultiplier="1.0">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="Hoopick"
-        android:textColor="#000000"
+        android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -27,7 +27,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:text="3point, 현주엽, assist : 김건모"
-        android:textColor="#000000"
+        android:textColor="#fff"
         android:textSize="16sp" />
 
     <RelativeLayout
@@ -37,10 +37,10 @@
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true">
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1">
 
             <ImageButton
                 android:id="@+id/button_shot_miss"
@@ -55,7 +55,7 @@
                 android:id="@+id/button_shot_made"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="165dp"
+                android:layout_marginLeft="180dp"
                 android:layout_toRightOf="@+id/button_shot_miss"
                 android:layout_weight="1"
                 android:background="@drawable/btn_goal_click"
@@ -73,7 +73,7 @@
                 android:id="@+id/button_shot_foul"
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="95dp"
+                android:layout_marginLeft="115dp"
                 android:layout_marginRight="0dp"
                 android:layout_marginTop="130dp"
                 android:background="@drawable/btn_foul_click"
