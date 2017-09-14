@@ -58,6 +58,7 @@ public class HpActionLineup extends HpActionBase {
 
         HpGameManager.get().getTimer().setGameClockMinutes(Integer.parseInt(mRemainingTime), Integer.parseInt(mShotTime));
 
+
         HpGameManager.get().getTeamHome().setName(mTeamHome);
         HpGameManager.get().getTeamAway().setName(mTeamAway);
 
@@ -87,6 +88,8 @@ public class HpActionLineup extends HpActionBase {
 //        aState.setPeriod("1");
         aState.setScoreAway("");
         aState.setScoreHome("");
+//        aState.setShotclock(String.format("%02d",0));
+//        aState.setRemainingTime(String.format("%02d:%02d",0,0));
 //        aState.setRemainingTime(String.format("%02d:%02d", 0, 0));
 //        aState.setElapsedTime(String.format("%02d:%02d", 0, 0));
 //        aState.setElapsedTimeSec(""));
@@ -159,4 +162,8 @@ public class HpActionLineup extends HpActionBase {
     public void setmRemainingTime(String mRemainingTime) {
         this.mRemainingTime = mRemainingTime;
     }
+
+    public String getmShotTime() {return mShotTime;}
+
+    public void setmShotTime(String mShotTime){this.mShotTime=mShotTime;}
 }

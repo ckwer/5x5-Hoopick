@@ -58,6 +58,8 @@ public abstract class HpActionBase {
         lNewState.setCurrentTime(HpTimeUtil.getCurrentTime("HH:mm:ss"));
         //
         lNewState.setRemainingTime(HpGameManager.get().getTimer().remainGameClockStr());
+
+        lNewState.setShotclock(HpGameManager.get().getTimer().remainShotClockStr());
         //
         lNewState.setElapsedTimeSec(String.format("%d",HpGameManager.get().getTimer().elapsedGameSec()));
         // elapsed sec

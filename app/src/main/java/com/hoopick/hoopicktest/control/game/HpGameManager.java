@@ -92,6 +92,9 @@ public class HpGameManager implements HpGameTimerListener {
                 String lGameTime = String.format("%02d:%02d", aRemainGameClockSec/60, aRemainGameClockSec%60);
                 lStateBluetooth.setRemainingTime(lGameTime);
 
+                String lShotClock = String.format("%02d",aRemainShotClockSec);
+                lStateBluetooth.setShotclock(lShotClock);
+
                 ObjectMapper lMapper = new ObjectMapper();
                 final String lJsonStateBluetooth = lMapper.writerWithDefaultPrettyPrinter().writeValueAsString(lStateBluetooth);
 

@@ -34,6 +34,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         , "playerAwayName5"
         , "playId"
         , "remainingTime"
+        , "shotclock"
         , "elapsedTime"
         , "elapsedTimeSec"
         , "playLength"
@@ -152,6 +153,7 @@ public class HpState extends Object implements Cloneable {
     private String foulsAway = "";
     private String foulsHome = "";
     private String remainingTime = "";  // Remaining time in the period : 0:12:00
+    private String shotclock ="";
     private String elapsedTime = "";    // Time passed since the period has started : 0:00:19
     @JsonIgnore private String elapsedTimeSec = "0";
     private String playLength = ""; // Duration of the event described in that row : 0:00:19
@@ -346,6 +348,10 @@ public class HpState extends Object implements Cloneable {
     public void setRemainingTime(String remainingTime) {
         this.remainingTime = remainingTime;
     }
+
+    public String getShotclock(){return shotclock;}
+
+    public void setShotclock(String shotclock){this.shotclock = shotclock;}
 
     public String getElapsedTime() {
         return elapsedTime;

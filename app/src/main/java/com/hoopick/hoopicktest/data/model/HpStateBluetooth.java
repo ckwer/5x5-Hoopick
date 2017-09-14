@@ -14,6 +14,7 @@ public class HpStateBluetooth {
     private String foulsAway = "";
     private String foulsHome = "";
     private String remainingTime = "";  // Remaining time in the period : 0:12:00
+    private String shotclock ="";
 
 
     public HpStateBluetooth () {
@@ -22,13 +23,15 @@ public class HpStateBluetooth {
     public HpStateBluetooth(HpState aState) {
         setTeamHome(aState.getTeamHome());
         setTeamAway(aState.getTeamAway());
-
         setScoreHome(aState.getScoreHome());
         setScoreAway(aState.getScoreAway());
         setFoulsHome(aState.getFoulsHome());
         setFoulsAway(aState.getFoulsAway());
 
         setRemainingTime(aState.getRemainingTime());
+        setShotclock(aState.getShotclock());
+
+
     }
 
     public String getTeamHome() {
@@ -62,6 +65,10 @@ public class HpStateBluetooth {
     public void setRemainingTime(String remainingTime) {
         this.remainingTime = remainingTime;
     }
+
+    public String getShotclock(){return shotclock;}
+
+    public void setShotclock(String shotclock){this.shotclock = shotclock;}
 
     public String getScoreAway() {
         return scoreAway;

@@ -11,7 +11,7 @@ import java.util.TimerTask;
 public class HpGameTimer {
 
     public static final int MAX_GAME_CLOCK_MIN = 10;    // min
-    public static final int MAX_SHOT_CLOCK_SEC = 30;    // sec
+    public static final int MAX_SHOT_CLOCK_SEC = 24;    // sec
 
     private HpGameTimerListener mGameTimerListener = null;
     public void setGameTimerListener(HpGameTimerListener aHpTimerListener) {
@@ -24,7 +24,7 @@ public class HpGameTimer {
     private Timer mTimerSec = new Timer();
 
     private int mMaxGameClockSec = MAX_GAME_CLOCK_MIN*60;
-    private int mMaxShotClockSec = MAX_SHOT_CLOCK_SEC;
+    private int mMaxShotClockSec = MAX_SHOT_CLOCK_SEC*1;
 
     public void startGame() {
 
@@ -37,7 +37,7 @@ public class HpGameTimer {
 
     public void setGameClockMinutes(int aGameClockMin, int aShotClockSec) {
         mMaxGameClockSec = aGameClockMin * 60;
-        mMaxShotClockSec = aShotClockSec;
+        mMaxShotClockSec = aShotClockSec * 1;
     }
 
     public void pause() {
