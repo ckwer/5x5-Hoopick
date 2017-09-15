@@ -3,6 +3,7 @@ package com.hoopick.hoopicktest.control.action;
 import android.content.Context;
 import android.util.Log;
 
+import com.hoopick.hoopicktest.control.game.HpGameEventListener;
 import com.hoopick.hoopicktest.control.game.HpGameManager;
 import com.hoopick.hoopicktest.control.game.team.player.HpPlayer;
 import com.hoopick.hoopicktest.data.HpDataManager;
@@ -17,6 +18,7 @@ public class HpActionShot extends HpActionBase {
     public static final String SHOT_MADE = "made";
     public static final String SHOT_MISSED = "missed";
 
+    private HpGameEventListener mGameEventListener = null;
     private String mEventType = "";
     private String mMadeOrMissed = "";
     private String mTeamExecuteEvent = "";
@@ -107,7 +109,7 @@ public class HpActionShot extends HpActionBase {
             });
 
         }
-        else {
+        else if(mMadeOrMissed == SHOT_MISSED){
             // Missed
             mEventType = HpState.EVENT_TYPE_SHOT;
 
@@ -133,11 +135,11 @@ public class HpActionShot extends HpActionBase {
 
     @Override
     protected void postTask() throws Exception {
+        // 공격시간 지속
 
-        // 공격시간 멈춤
-        HpGameManager.get().getTimer().getStopWatchShot().stop();
+            HpGameManager.get().getTimer().remainGameClockSec();
+            HpGameManager.get().getBall().setGrabbedPlayer("");
 
-        HpGameManager.get().getBall().setGrabbedPlayer("");
 
         runOnListener(new Runnable() {
             @Override

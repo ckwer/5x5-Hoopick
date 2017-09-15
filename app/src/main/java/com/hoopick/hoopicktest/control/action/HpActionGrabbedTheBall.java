@@ -33,7 +33,6 @@ public class HpActionGrabbedTheBall extends HpActionBase {
 
     @Override
     protected boolean preTask() throws Exception {
-
         mOldTeamGrabbedTheBall = HpGameManager.get().getBall().getGrabbedPlayer();
         mNewTeamGrabbedTheBall = HpGameManager.get().findPlayByTeam(mTeamNameGrabbedTheBall);
 
@@ -45,6 +44,7 @@ public class HpActionGrabbedTheBall extends HpActionBase {
 
         // shot 했으면 본인이 리바운드 할 수 있다.
         if (mPrevState.getEventType() != HpState.EVENT_TYPE_SHOT) {
+            HpGameManager.get().getTimer().setmMaxShotClockSec(24); // 14초 이하 공격자 리바운드 이후 턴오버 했을시 샷클락 초기화
 
             if (mNewTeamGrabbedTheBall.equals(mOldTeamGrabbedTheBall)) {
                 Log.e("", "공을 이미 가지고 있는 경우");
@@ -75,14 +75,30 @@ public class HpActionGrabbedTheBall extends HpActionBase {
             if (lPlayerMissed.getParentTeam() != mNewTeamGrabbedTheBall.getParentTeam()) {
                 // 공수 바뀐 경우
                 mEventDetail = HpState.EVENT_DETAIL_REBOUND_DEFENSIVE;
+                HpGameManager.get().getTimer().getStopWatchShot().stop();
+                HpGameManager.get().getTimer().setmMaxShotClockSec(24); //수비자 리바운드 할시 샷클락 초기화
+                HpGameManager.get().getTimer().getStopWatchShot().start();
             }
-            else {
-                // 공수 안바뀐 경우
-                mEventDetail = HpState.EVENT_DETAIL_REBOUND_OFFENSIVE;
+            // 공수 안바뀐 경우 14초 이하일때 샷클락 14초
+            else if(lPlayerMissed.getParentTeam() == mNewTeamGrabbedTheBall.getParentTeam()){
+                if(HpGameManager.get().getTimer().remainShotClockSec() <= 14) {
+                    HpGameManager.get().getTimer().setmMaxShotClockSec(14);
+                    HpGameManager.get().getTimer().getStopWatchShot().stop();
+                    HpGameManager.get().getTimer().getStopWatchShot().start();
+
+                }
             }
 
-            HpGameManager.get().getTimer().getStopWatchShot().stop();
-            HpGameManager.get().getTimer().getStopWatchShot().start();
+            else if(lPlayerMissed.getParentTeam() == mNewTeamGrabbedTheBall.getParentTeam()) {
+                // 공수 안바뀐 경우 14초 이상일때 샷클락 지속
+                mEventDetail = HpState.EVENT_DETAIL_REBOUND_OFFENSIVE;
+                if(HpGameManager.get().getTimer().remainGameClockSec() >= 14) {
+                    HpGameManager.get().getTimer().resume();
+
+                }
+
+            }
+
 
             // rebound
             mEventType = HpState.EVENT_TYPE_REBOUND;
@@ -115,6 +131,8 @@ public class HpActionGrabbedTheBall extends HpActionBase {
                 else {
                     // 공수 안바뀐 경우
                     // GameTime Resume
+                    HpGameManager.get().getTimer().resume();
+
                 }
 
                 mEventType = HpState.EVENT_TYPE_SET;
