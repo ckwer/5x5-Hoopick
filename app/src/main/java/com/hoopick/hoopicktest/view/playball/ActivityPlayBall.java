@@ -297,6 +297,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
         each(new PlayerView() {
             @Override
             public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName, ImageView aImageBall) {
+                aTextName.setText(aPlayer.getName());
                 aImageBall.setVisibility(View.INVISIBLE);
             }
         });
