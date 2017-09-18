@@ -877,33 +877,33 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                 String HomeTeamSelect = HpGameManager.get().getTeamHome().getName();
                 if(lPlayerSelect.getName() == HomeTeamSelect ) {
 
-                    mImageEvent.setX(event.getX() - 390);
-                    mImageEvent.setY(event.getY() - 10);
+                    mImageEvent.setX(event.getX()-520);
+                    mImageEvent.setY(event.getY()-20);
 
-                    int lPosX = (int) (event.getX() * 15000 / view.getWidth());
-                    int lPosY = (int) (event.getY() * 10000 / view.getHeight());
+                    int lPosX = (int) (event.getX() * 20000 / view.getWidth());
+                    int lPosY = (int) (event.getY() * 9000 / view.getHeight());
 
-                    int lGoalX = 13500;
-                    int lGoalY = 5000;
+                    int lGoalX = 18200;
+                    int lGoalY = 4500;
 
                     int lDistance = CoordUtil.getDistance(lGoalX, lGoalY, lPosX, lPosY);
-                    int lPointScore = CoordUtil.pointScoreInHalf(lGoalX, lGoalY, 10000, 5300, lPosX, lPosY);
+                    int lPointScore = CoordUtil.pointScoreInHalf(lGoalX, lGoalY, 14200, 4800, lPosX, lPosY);
 
                     doShot(lPointScore, lPosX, lPosY, lDistance);
                 }
                 else{
 
-                    mImageEvent.setX(event.getX() + 30);
-                    mImageEvent.setY(event.getY() - 20);
+                    mImageEvent.setX(event.getX()-20);
+                    mImageEvent.setY(event.getY()-20);
 
-                    int lPosX = (int) (event.getX() * 15000 / view.getWidth());
-                    int lPosY = (int) (event.getY() * 10000 / view.getHeight());
+                    int lPosX = (int) (event.getX() * 20000 / view.getWidth());
+                    int lPosY = (int) (event.getY() * 9000 / view.getHeight());
 
-                    int lGoalX = 1500;
-                    int lGoalY = 5000;
+                    int lGoalX = 1800;
+                    int lGoalY = 4500;
 
                     int lDistance = CoordUtil.getDistance(lGoalX, lGoalY, lPosX, lPosY);
-                    int lPointScore = CoordUtil.pointScoreInHalf(lGoalX, lGoalY, 5000, 5300, lPosX, lPosY);
+                    int lPointScore = CoordUtil.pointScoreInHalf(lGoalX, lGoalY, 5800, 4800, lPosX, lPosY);
 
                     doShot(lPointScore, lPosX, lPosY, lDistance);
                 }
