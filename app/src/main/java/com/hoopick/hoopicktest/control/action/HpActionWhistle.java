@@ -37,7 +37,6 @@ public class HpActionWhistle extends HpActionBase {
         // whistle sound
         MediaPlayer lPlayer = MediaPlayer.create(mContext, R.raw.buzzer);
         lPlayer.start();
-
         // GameTime Pause
         HpGameManager.get().pause();
 
@@ -55,6 +54,7 @@ public class HpActionWhistle extends HpActionBase {
             public void run() {
                 HpGameManager.get().getGameEventListener().onGrabbedTheBallResult(null);
                 HpGameManager.get().getGameEventListener().onWhistleResult();
+                HpGameManager.get().getGameEventListener().onShotClockChicagoMusic_stop(); // Chicago 음악 멈춤
             }
         });
 
