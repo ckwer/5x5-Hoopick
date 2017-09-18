@@ -84,6 +84,8 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     private AlertDialog mAlertDialog = null;
     private final int REQUEST_CODE_START_ACTIVITY = 1;
 
+    public MediaPlayer Chicago_MediaPlayer;
+
     private HorizontalScrollView mScrollCourt;
     private ImageView mImageCourt;
     private ImageView mImageEvent;
@@ -337,6 +339,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
                         try {
                             new HpActionShot(getContext(), HpActionShot.SHOT_MADE, aPointScore, aPosX, aPosY, aDistance).execute();
+                            HpGameManager.get().getGameEventListener().onShotClockChicagoMusic_stop(); // 슛 성공시 Chicago 음악 멈춤
                         }
                         catch (Exception e) {
                             e.printStackTrace();
@@ -474,6 +477,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
                                                     try {
                                                         new HpActionFreeThrow(getContext(), HpActionFreeThrow.FREE_THROW_TYPE_SHOT_FOUL, lMadeOrMiss, lPlayerFreeThrow, lPlayerShotFoul, 0).execute();
+
                                                     }
                                                     catch (Exception e) {
                                                         e.printStackTrace();
@@ -522,6 +526,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
                             try {
                                 new HpActionShot(getContext(), HpActionShot.SHOT_MISSED, aPointScore, aPosX, aPosY, aDistance).execute();
+                                HpGameManager.get().getGameEventListener().onShotClockChicagoMusic_stop(); // 슛 실패 Chicago 음악 멈춤
                             }
                             catch (Exception e) {
                                 e.printStackTrace();
@@ -541,8 +546,11 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                         // execute action shot foul
                         lShotDialog.toggleShotFoul();
 
+                        HpGameManager.get().getGameEventListener().onShotClockChicagoMusic_stop(); // 파울시 Chicago 음악 멈춤
+
                         final DialogSelectPlayer lDialogSelectPlayer = new DialogSelectPlayer(getContext(), "Select a player", "Who Shot foul?");
                         lDialogSelectPlayer.hideTeam(lPlayerShot.getParentTeam().getTeamType());
+
                         lDialogSelectPlayer.setOnClickPlayerListner(new DialogSelectPlayer.OnClickPlayerListner() {
                             @Override
                             void OnClickPlayer(int team, int player) {
@@ -687,7 +695,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
         final DialogWhistle lDialogWhistle = new DialogWhistle(getContext());
         lDialogWhistle.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        mScrollCourt.scrollTo(185,0);
+        mScrollCourt.scrollTo(240,0);
         lDialogWhistle.setOnClickWhistleListner(new DialogWhistle.OnClickWhistleListner() {
             @Override
             void OnClickWhistle(int aMenuItem) {
@@ -967,17 +975,22 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                             String AwayTeamSelect = HpGameManager.get().getTeamAway().getName();
                             final HpPlayer lPlayerSelect = HpGameManager.get().getBall().getGrabbedPlayer();
                             if(lPlayerSelect.getName() == HomeTeamSelect ) {
-                                mScrollCourt.smoothScrollTo(1500, 0);
-                                mScrollCourt.setOnTouchListener(new OnTouchListener() {
-                                    @Override
-                                    public boolean onTouch(View v, MotionEvent event) {
 
-                                        return true;
-                                    }
-                                });
+
+                                    mScrollCourt.smoothScrollTo(1500, 0);
+                                    mScrollCourt.setOnTouchListener(new OnTouchListener() {
+                                        @Override
+                                        public boolean onTouch(View v, MotionEvent event) {
+
+                                            return true;
+                                        }
+                                    });
+                                HpGameManager.get().getGameEventListener().onShotClockChicagoMusic_stop(); //턴 오버시 시카고불스 음악 멈춤
 
                             }
                             else if(lPlayerSelect.getName() == AwayTeamSelect ){
+
+
                                 mScrollCourt.smoothScrollTo(0, 0);
                                 mScrollCourt.setOnTouchListener(new OnTouchListener() {
                                     @Override
@@ -986,6 +999,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                                         return true;
                                     }
                                 });
+                                HpGameManager.get().getGameEventListener().onShotClockChicagoMusic_stop(); //턴 오버시 시카고불스 음악 멈춤
                             }
 
                         }
@@ -1041,12 +1055,19 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     }
 
     @Override
-    public void onShotClockResult2() {
+    public void onShotClockChicagoMusic() {
         Log.d("Hoopick", "onShotClockResult");
 
-        MediaPlayer lMediaPlayer = MediaPlayer.create(getContext(), R.raw.nbnsound);
-        lMediaPlayer.start();
+        Chicago_MediaPlayer = MediaPlayer.create(getContext(), R.raw.nbnsound);
+        Chicago_MediaPlayer.start();
 
+    }
+
+    @Override
+    public void onShotClockChicagoMusic_stop(){
+        Log.d("Hoopick", "onShotClockResult_stop");
+
+        Chicago_MediaPlayer.stop();
     }
 
     @Override
@@ -1055,6 +1076,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
         MediaPlayer lMediaPlayer = MediaPlayer.create(getContext(), R.raw.whistle);
         lMediaPlayer.start();
+        Chicago_MediaPlayer.stop();
 
     }
 

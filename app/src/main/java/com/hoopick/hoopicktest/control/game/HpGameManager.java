@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hoopick.hoopicktest.control.action.HpActionGrabbedTheBall;
+import com.hoopick.hoopicktest.control.action.HpActionShot;
 import com.hoopick.hoopicktest.control.game.HpGameEventListener;
 import com.hoopick.hoopicktest.control.bluetooth.HpBluetoothManager;
 import com.hoopick.hoopicktest.control.bluetooth.HpBluetoothSerialService;
@@ -152,7 +154,8 @@ public class HpGameManager implements HpGameTimerListener {
                 @Override
                 public void run() {
                     // 공격시간 10초 남았을때 사운드
-                    mGameEventListener.onShotClockResult2();
+                    mGameEventListener.onShotClockChicagoMusic();
+
                 }
             });
 

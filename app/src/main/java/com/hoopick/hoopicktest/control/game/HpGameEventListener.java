@@ -12,7 +12,9 @@ public interface HpGameEventListener {
 
     void onShotClockResult();
 
-    void onShotClockResult2();
+    void onShotClockChicagoMusic(); //시카고 불스 음악 start
+
+    void onShotClockChicagoMusic_stop(); //시카고 불스 음악 stop
 
     void onGameClockResult();
 
