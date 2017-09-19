@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
@@ -30,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.view.View.OnTouchListener;
 
+import com.google.common.util.concurrent.Runnables;
 import com.hoopick.hoopicktest.R;
 import com.hoopick.hoopicktest.control.action.HpActionBase;
 import com.hoopick.hoopicktest.control.action.HpActionFoul;
@@ -60,6 +62,7 @@ import android.app.Fragment;
 
 import org.w3c.dom.Text;
 
+import java.sql.Time;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
@@ -71,7 +74,7 @@ import java.util.TimerTask;
  * Created by junhyeok on 2017. 8. 16..
  */
 
-public class ActivityPlayBall extends AppCompatActivity implements HpGameEventListener,HpBluetoothListener{
+public class ActivityPlayBall extends AppCompatActivity implements HpGameEventListener,HpBluetoothListener {
 
     public static final String TAG = "ActivityPlayBall";
     // Intent request codes
@@ -94,17 +97,17 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     private TextView mTextEndQuater;
     private Button mHomeScoreButton;
     private Button mAwayScoreButton;
-
     private View[][] mViewPlayer = new View[MAX_TEAM][MAX_PLAYER];
 
+    private Timer timer;
 
     private Context getContext() {
         return ActivityPlayBall.this;
     }
-    protected void onCreate(Bundle savedInstanceState){
+
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_playball);
-
         getSupportActionBar().hide();
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -126,7 +129,6 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     }
 
 
-
     @Override
     public void onBackPressed() {
         mAlertDialog = new AlertDialog.Builder(this)
@@ -140,7 +142,9 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                         Intent lIntent = new Intent(ActivityPlayBall.this, ActivityLineup.class);
                         lIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         ActivityPlayBall.this.startActivityForResult(lIntent, REQUEST_CODE_START_ACTIVITY);
+                        ActivityPlayBall.this.timer.cancel(); // 뒤로가고 다시 실행했을때 프로그램 재실행 문제 -> 오류로 인한 리셋으로 대체중
                         ActivityPlayBall.this.finish();
+                        startActivity(lIntent);
 
                     }
                 }).create();
@@ -192,6 +196,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     }
 
     private  void initLayout(){
+
         TextView lTextGameTime = (TextView) findViewById(R.id.text_game_time);
         lTextGameTime.setText(String.format("%d:00", HpGameManager.get().getTimer().getmMaxGameClockSec()/60));
 
@@ -539,14 +544,15 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                         break;
 
                     case DialogShot.SHOT_FOUL:
-
+                        if(HpGameManager.get().getTimer().remainShotClockSec() <= 10) {  // 시카고불스 음악 나오기 전에 파울 누룰시 오류문제 해결
+                            HpGameManager.get().getGameEventListener().onShotClockChicagoMusic_stop(); // 파울시 Chicago 음악 멈춤
+                        }
                         // GameTime Pause
                         HpGameManager.get().pause();
 
                         // execute action shot foul
                         lShotDialog.toggleShotFoul();
-
-                        HpGameManager.get().getGameEventListener().onShotClockChicagoMusic_stop(); // 파울시 Chicago 음악 멈춤
+                        
 
                         final DialogSelectPlayer lDialogSelectPlayer = new DialogSelectPlayer(getContext(), "Select a player", "Who Shot foul?");
                         lDialogSelectPlayer.hideTeam(lPlayerShot.getParentTeam().getTeamType());
@@ -564,9 +570,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
                             }
                         });
-
                         lDialogSelectPlayer.show();
-
                         break;
 
                 }
@@ -884,10 +888,10 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                     int lPosY = (int) (event.getY() * 9000 / view.getHeight());
 
                     int lGoalX = 18200;
-                    int lGoalY = 4500;
+                    int lGoalY = 4200;
 
                     int lDistance = CoordUtil.getDistance(lGoalX, lGoalY, lPosX, lPosY);
-                    int lPointScore = CoordUtil.pointScoreInHalf(lGoalX, lGoalY, 14200, 4800, lPosX, lPosY);
+                    int lPointScore = CoordUtil.pointScoreInHalf(lGoalX, lGoalY, 14200, 4200, lPosX, lPosY);
 
                     doShot(lPointScore, lPosX, lPosY, lDistance);
                 }
@@ -900,10 +904,10 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                     int lPosY = (int) (event.getY() * 9000 / view.getHeight());
 
                     int lGoalX = 1800;
-                    int lGoalY = 4500;
+                    int lGoalY = 4200;
 
                     int lDistance = CoordUtil.getDistance(lGoalX, lGoalY, lPosX, lPosY);
-                    int lPointScore = CoordUtil.pointScoreInHalf(lGoalX, lGoalY, 5800, 4800, lPosX, lPosY);
+                    int lPointScore = CoordUtil.pointScoreInHalf(lGoalX, lGoalY, 5800, 4200, lPosX, lPosY);
 
                     doShot(lPointScore, lPosX, lPosY, lDistance);
                 }
@@ -1000,6 +1004,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                                     }
                                 });
                                 HpGameManager.get().getGameEventListener().onShotClockChicagoMusic_stop(); //턴 오버시 시카고불스 음악 멈춤
+
                             }
 
                         }
