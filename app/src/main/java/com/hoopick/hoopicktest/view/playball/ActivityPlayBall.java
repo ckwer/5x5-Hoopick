@@ -552,7 +552,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
                         // execute action shot foul
                         lShotDialog.toggleShotFoul();
-                        
+
 
                         final DialogSelectPlayer lDialogSelectPlayer = new DialogSelectPlayer(getContext(), "Select a player", "Who Shot foul?");
                         lDialogSelectPlayer.hideTeam(lPlayerShot.getParentTeam().getTeamType());
@@ -564,6 +564,14 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                                 HpPlayer lPlayerShotFoul = HpGameManager.get().findPlayerBySlot(team, player);
 
                                 // action foul
+                                try {
+                                    new HpActionFoul(getContext(), lPlayerShotFoul.getName()).execute();
+                                }
+                                catch (Exception e) {
+                                    e.printStackTrace();
+                                    Log.e("", e.toString());
+                                }
+
                                 mPlayerShotFoul = lPlayerShotFoul.getName();
 
                                 lShotDialog.setDesc(lShotDialog.getDesc() + ", ShotFoul : " + mPlayerShotFoul);
