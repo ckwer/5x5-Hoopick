@@ -2,8 +2,10 @@ package com.hoopick.hoopicktest.control.game;
 
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -79,6 +81,8 @@ public class HpGameManager implements HpGameTimerListener {
 
     }
 
+
+
     @Override
     public void onTick(final int aRemainGameClockSec, final int aRemainShotClockSec) {
 
@@ -100,25 +104,32 @@ public class HpGameManager implements HpGameTimerListener {
                 ObjectMapper lMapper = new ObjectMapper();
                 final String lJsonStateBluetooth = lMapper.writerWithDefaultPrettyPrinter().writeValueAsString(lStateBluetooth);
 
-                new Handler().post(new Runnable() {
+
+                Handler mHandler = new Handler(Looper.getMainLooper());
+                mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        // 내용
                         try {
                             HpBluetoothManager.get().write(lJsonStateBluetooth);
                         }
                         catch (Exception e) {
                             Log.e("Hoopick", e.getMessage());
                         }
-                    }
-                });
 
+                    }
+                }, 0);
 
             }
             catch (Exception e) {
                 Log.e("Hoopick", e.getMessage());
             }
 
+
+
         }
+
+
 
         runOnListener(new Runnable() {
             @Override
@@ -144,6 +155,13 @@ public class HpGameManager implements HpGameTimerListener {
         // 공격시간 종료일 경우
         if (0 == aRemainShotClockSec) {
             mGameTimer.getStopWatchShot().stop();
+
+            runOnListener(new Runnable() {
+                @Override
+                public void run() {
+                    mGameEventListener.onGameClockResult();
+                }
+            });
 
         }
 
