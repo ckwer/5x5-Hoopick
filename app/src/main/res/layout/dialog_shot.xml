@@ -9,33 +9,36 @@
     android:orientation="vertical"
     app:layout_collapseParallaxMultiplier="1.0">
 
-    <TextView
-        android:id="@+id/text_title"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:text="Hoopick"
-        android:textColor="#fff"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/text_desc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"
-        android:text="3point, 현주엽, assist : 김건모"
-        android:textColor="#fff"
-        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            android:text="Hoopick"
+            android:textColor="#fff"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/text_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="3point, 현주엽, assist : 김건모"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -44,21 +47,11 @@
 
             <ImageButton
                 android:id="@+id/button_shot_miss"
-                android:layout_width="180dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="0dp"
-                android:layout_weight="1"
-                android:background="@drawable/btn_fail_click"
-                android:visibility="visible" />
-
-            <ImageButton
-                android:id="@+id/button_shot_made"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="180dp"
-                android:layout_toRightOf="@+id/button_shot_miss"
+                android:layout_gravity="left"
                 android:layout_weight="1"
-                android:background="@drawable/btn_goal_click"
+                android:background="@drawable/btn_fail_click"
                 android:visibility="visible" />
 
             <TextView
@@ -70,15 +63,28 @@
                 android:visibility="visible" />
 
             <ImageButton
+                android:id="@+id/button_shot_made"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:layout_toRightOf="@+id/button_shot_miss"
+                android:layout_weight="1"
+                android:background="@drawable/btn_goal_click"
+                android:visibility="visible" />
+
+            <ImageButton
                 android:id="@+id/button_shot_foul"
-                android:layout_width="130dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="115dp"
-                android:layout_marginRight="0dp"
-                android:layout_marginTop="130dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentTop="false"
+                android:layout_gravity="center"
+                android:layout_marginRight="5sp"
                 android:background="@drawable/btn_foul_click"
                 android:visibility="visible"
                 tools:visibility="visible" />
+
         </FrameLayout>
 
     </RelativeLayout>

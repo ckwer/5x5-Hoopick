@@ -44,12 +44,50 @@
             android:orientation="vertical"
             >
 
-            <Button
+            <include
+                android:id="@+id/layout_home_uniform1"
+                layout="@layout/layout_uniform"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
 
-                android:id="@+id/HomeBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Home" />
+            <include
+                android:id="@+id/layout_home_uniform2"
+                layout="@layout/layout_uniform"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
+
+            <include
+                android:id="@+id/layout_home_uniform3"
+                layout="@layout/layout_uniform"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
+            <include
+                android:id="@+id/layout_home_uniform4"
+                layout="@layout/layout_uniform"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
+            <include
+                android:id="@+id/layout_home_uniform5"
+                layout="@layout/layout_uniform"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
+
+
 
 
         </LinearLayout>
@@ -68,19 +106,58 @@
 
         <!-- Away Team -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#00000000"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
+
+            <include
+                android:id="@+id/layout_away_uniform1"
+                layout="@layout/layout_uniform"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
+
+            <include
+                android:id="@+id/layout_away_uniform2"
+                layout="@layout/layout_uniform"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
+
+            <include
+                android:id="@+id/layout_away_uniform3"
+                layout="@layout/layout_uniform"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
+            <include
+                android:id="@+id/layout_away_uniform4"
+                layout="@layout/layout_uniform"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
+            <include
+                android:id="@+id/layout_away_uniform5"
+                layout="@layout/layout_uniform"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                />
 
 
-            <Button
 
-                android:id="@+id/AwayBtn"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Away" />
         </LinearLayout>
 
 

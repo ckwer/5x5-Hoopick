@@ -42,6 +42,22 @@
             android:layout_gravity="center"
             />
 
+        <include
+            android:id="@+id/layout_home_uniform4"
+            layout="@layout/layout_uniform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
+        <include
+            android:id="@+id/layout_home_uniform5"
+            layout="@layout/layout_uniform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -49,12 +65,11 @@
             >
 
             <include
-                android:id="@+id/layout_home_uniform4"
+                android:id="@+id/layout_home_uniform6"
                 layout="@layout/layout_uniform"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                />
+                android:layout_gravity="center" />
 
             <ImageView
                 android:layout_width="50dp"
@@ -77,13 +92,12 @@
         >
 
         <include
-            android:id="@+id/layout_home_uniform1"
+            android:id="@+id/layout_away_uniform1"
             layout="@layout/layout_uniform"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
-            />
+            android:layout_weight="1" />
 
         <include
             android:id="@+id/layout_away_uniform2"
@@ -103,6 +117,22 @@
             android:layout_gravity="center"
             />
 
+        <include
+            android:id="@+id/layout_away_uniform4"
+            layout="@layout/layout_uniform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
+        <include
+            android:id="@+id/layout_away_uniform5"
+            layout="@layout/layout_uniform"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,12 +140,11 @@
             >
 
             <include
-                android:id="@+id/layout_away_uniform4"
+                android:id="@+id/layout_away_uniform6"
                 layout="@layout/layout_uniform"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                />
+                android:layout_gravity="center" />
 
             <ImageView
                 android:layout_width="50dp"

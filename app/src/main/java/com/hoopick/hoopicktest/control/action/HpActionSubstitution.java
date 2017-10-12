@@ -19,6 +19,10 @@ public class HpActionSubstitution extends HpActionBase {
     private String mPlayerHomeNumber3 = "";
     private String mPlayerHomeName4 = "";
     private String mPlayerHomeNumber4 = "";
+    private String mPlayerHomeName5 = "";
+    private String mPlayerHomeNumber5 = "";
+    private String mPlayerHomeName6 = "";
+    private String mPlayerHomeNumber6 = "";
 
     private String mPlayerAwayName1 = "";
     private String mPlayerAwayNumber1 = "";
@@ -27,7 +31,11 @@ public class HpActionSubstitution extends HpActionBase {
     private String mPlayerAwayName3 = "";
     private String mPlayerAwayNumber3 = "";
     private String mPlayerAwayName4 = "";
-    private String mPlayerAwayNumber4 = "";    
+    private String mPlayerAwayNumber4 = "";
+    private String mPlayerAwayName5 = "";
+    private String mPlayerAwayNumber5 = "";
+    private String mPlayerAwayName6 = "";
+    private String mPlayerAwayNumber6 = "";
 
     public HpActionSubstitution(Context aContext,
                                 String aPlayerHomeName1,
@@ -38,6 +46,10 @@ public class HpActionSubstitution extends HpActionBase {
                                 String aPlayerHomeNumber3,
                                 String aPlayerHomeName4,
                                 String aPlayerHomeNumber4,
+                                String aPlayerHomeName5,
+                                String aPlayerHomeNumber5,
+                                String aPlayerHomeName6,
+                                String aPlayerHomeNumber6,
                                 String aPlayerAwayName1,
                                 String aPlayerAwayNumber1,
                                 String aPlayerAwayName2,
@@ -45,7 +57,11 @@ public class HpActionSubstitution extends HpActionBase {
                                 String aPlayerAwayName3,
                                 String aPlayerAwayNumber3,
                                 String aPlayerAwayName4,
-                                String aPlayerAwayNumber4
+                                String aPlayerAwayNumber4,
+                                String aPlayerAwayName5,
+                                String aPlayerAwayNumber5,
+                                String aPlayerAwayName6,
+                                String aPlayerAwayNumber6
     ) {
         super(aContext);
 
@@ -57,6 +73,11 @@ public class HpActionSubstitution extends HpActionBase {
         mPlayerHomeNumber3 = aPlayerHomeNumber3;
         mPlayerHomeName4 = aPlayerHomeName4;
         mPlayerHomeNumber4 = aPlayerHomeNumber4;
+        mPlayerHomeName5 = aPlayerHomeName5;
+        mPlayerHomeNumber5 = aPlayerHomeNumber5;
+        mPlayerHomeName6 = aPlayerHomeName6;
+        mPlayerHomeNumber6 = aPlayerHomeNumber6;
+
 
         mPlayerAwayName1 = aPlayerAwayName1;
         mPlayerAwayNumber1 = aPlayerAwayNumber1;
@@ -65,7 +86,11 @@ public class HpActionSubstitution extends HpActionBase {
         mPlayerAwayName3 = aPlayerAwayName3;
         mPlayerAwayNumber3 = aPlayerAwayNumber3;
         mPlayerAwayName4 = aPlayerAwayName4;
-        mPlayerAwayNumber4 = aPlayerAwayNumber4;        
+        mPlayerAwayNumber4 = aPlayerAwayNumber4;
+        mPlayerAwayName5 = aPlayerAwayName5;
+        mPlayerAwayNumber5 = aPlayerAwayNumber5;
+        mPlayerAwayName6 = aPlayerAwayName6;
+        mPlayerAwayNumber6 = aPlayerAwayNumber6;
 
     }
 
@@ -100,6 +125,12 @@ public class HpActionSubstitution extends HpActionBase {
         HpGameManager.get().findPlayerBySlot(0, 3).setName(mPlayerHomeName4);
         HpGameManager.get().findPlayerBySlot(0, 3).setNumber(mPlayerHomeNumber4);
 
+        HpGameManager.get().findPlayerBySlot(0, 4).setName(mPlayerHomeName5);
+        HpGameManager.get().findPlayerBySlot(0, 4).setNumber(mPlayerHomeNumber5);
+
+        HpGameManager.get().findPlayerBySlot(0, 5).setName(mPlayerHomeName6);
+        HpGameManager.get().findPlayerBySlot(0, 5).setNumber(mPlayerHomeNumber6);
+
 
         HpGameManager.get().findPlayerBySlot(1, 0).setName(mPlayerAwayName1);
         HpGameManager.get().findPlayerBySlot(1, 0).setNumber(mPlayerAwayNumber1);
@@ -112,6 +143,12 @@ public class HpActionSubstitution extends HpActionBase {
 
         HpGameManager.get().findPlayerBySlot(1, 3).setName(mPlayerAwayName4);
         HpGameManager.get().findPlayerBySlot(1, 3).setNumber(mPlayerAwayNumber4);
+
+        HpGameManager.get().findPlayerBySlot(1, 4).setName(mPlayerAwayName5);
+        HpGameManager.get().findPlayerBySlot(1, 4).setNumber(mPlayerAwayNumber5);
+
+        HpGameManager.get().findPlayerBySlot(1, 5).setName(mPlayerAwayName6);
+        HpGameManager.get().findPlayerBySlot(1, 5).setNumber(mPlayerAwayNumber6);
         
     }
 
@@ -127,22 +164,24 @@ public class HpActionSubstitution extends HpActionBase {
         aState.setPlayerHomeName2(mPlayerHomeName2);
         aState.setPlayerHomeName3(mPlayerHomeName3);
         aState.setPlayerHomeName4(mPlayerHomeName4);
-        aState.setPlayerHomeName5("");
+        aState.setPlayerHomeName5(mPlayerHomeName5);
+
         aState.setPlayerHomeNumber1(mPlayerHomeNumber1);
         aState.setPlayerHomeNumber2(mPlayerHomeNumber2);
         aState.setPlayerHomeNumber3(mPlayerHomeNumber3);
         aState.setPlayerHomeNumber4(mPlayerHomeNumber4);
-        aState.setPlayerHomeNumber5("");
+        aState.setPlayerHomeNumber5(mPlayerHomeNumber5);
+
         aState.setPlayerAwayName1(mPlayerAwayName1);
         aState.setPlayerAwayName2(mPlayerAwayName2);
         aState.setPlayerAwayName3(mPlayerAwayName3);
         aState.setPlayerAwayName4(mPlayerAwayName4);
-        aState.setPlayerAwayName5("");
+        aState.setPlayerAwayName5(mPlayerAwayName5);
         aState.setPlayerAwayNumber1(mPlayerAwayNumber1);
         aState.setPlayerAwayNumber2(mPlayerAwayNumber2);
         aState.setPlayerAwayNumber3(mPlayerAwayNumber3);
         aState.setPlayerAwayNumber4(mPlayerAwayNumber4);
-        aState.setPlayerAwayNumber5("");
+        aState.setPlayerAwayNumber5(mPlayerAwayNumber5);
 //        aState.setPeriod("1");
 //        aState.setScoreAway("0");
 //        aState.setScoreHome("0");

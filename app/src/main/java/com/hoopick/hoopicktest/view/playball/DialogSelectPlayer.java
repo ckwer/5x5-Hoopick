@@ -19,17 +19,26 @@ public class DialogSelectPlayer extends Dialog  {
 
     private static final int[][] lSelectIds = {
             {
-                    R.id.HomeBtn
+                    R.id.layout_home_uniform1
+                    , R.id.layout_home_uniform2
+                    , R.id.layout_home_uniform3
+                    , R.id.layout_home_uniform4
+                    , R.id.layout_home_uniform5
             },
             {
-                    R.id.AwayBtn
+                    R.id.layout_away_uniform1
+                    , R.id.layout_away_uniform2
+                    , R.id.layout_away_uniform3
+                    , R.id.layout_away_uniform4
+                    , R.id.layout_away_uniform5
             }
     };
 
     private String mTitle = "";
     private String mDesc = "";
     private int mHideTeam = -1;
-
+    private TextView[] lTextPlayerNumber = new TextView[10];
+    private TextView[] lTextPlayerName = new TextView[10];
     private OnClickPlayerListner mOnClickListner = null;
 
     public DialogSelectPlayer(Context context, String aTitle, String aDesc) {
@@ -74,6 +83,12 @@ public class DialogSelectPlayer extends Dialog  {
                 lViewUniform.setTag(new Integer(n));
 
                 int lIndex = n * 4 + k;
+
+                lTextPlayerNumber[lIndex] = (TextView) lViewUniform.findViewById(R.id.text_player_number);
+                lTextPlayerNumber[lIndex].setText(lPlayer.getNumber());
+
+                lTextPlayerName[lIndex] = (TextView) lViewUniform.findViewById(R.id.text_player_name);
+                lTextPlayerName[lIndex].setText(lPlayer.getName());
 
             }
         }
