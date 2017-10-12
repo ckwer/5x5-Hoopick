@@ -18,6 +18,26 @@ public class HpActionLineup extends HpActionBase {
     private String mSeason = "";
     private String mTeamHome = "";
     private String mTeamAway = "";
+    private String mPlayerHomeName1 = "";
+    private String mPlayerHomeName2 = "";
+    private String mPlayerHomeName3 = "";
+    private String mPlayerHomeName4 = "";
+    private String mPlayerHomeName5 = "";
+    private String mPlayerHomeNumber1 = "";
+    private String mPlayerHomeNumber2 = "";
+    private String mPlayerHomeNumber3 = "";
+    private String mPlayerHomeNumber4 = "";
+    private String mPlayerHomeNumber5 = "";
+    private String mPlayerAwayName1 = "";
+    private String mPlayerAwayName2 = "";
+    private String mPlayerAwayName3 = "";
+    private String mPlayerAwayName4 = "";
+    private String mPlayerAwayName5 = "";
+    private String mPlayerAwayNumber1 = "";
+    private String mPlayerAwayNumber2 = "";
+    private String mPlayerAwayNumber3 = "";
+    private String mPlayerAwayNumber4 = "";
+    private String mPlayerAwayNumber5 = "";
     private String mRemainingTime = "";
     private String mShotTime = "";
     public HpActionLineup(Context aContext
@@ -25,6 +45,26 @@ public class HpActionLineup extends HpActionBase {
             , String aSeason
             , String aTeamHome
             , String aTeamAway
+            , String aPlayerHomeNumber1
+            , String aPlayerHomeName1
+            , String aPlayerHomeNumber2
+            , String aPlayerHomeName2
+            , String aPlayerHomeNumber3
+            , String aPlayerHomeName3
+            , String aPlayerHomeNumber4
+            , String aPlayerHomeName4
+            , String aPlayerHomeNumber5
+            , String aPlayerHomeName5
+            , String aPlayerAwayNumber1
+            , String aPlayerAwayName1
+            , String aPlayerAwayNumber2
+            , String aPlayerAwayName2
+            , String aPlayerAwayNumber3
+            , String aPlayerAwayName3
+            , String aPlayerAwayNumber4
+            , String aPlayerAwayName4
+            , String aPlayerAwayNumber5
+            , String aPlayerAwayName5
             , String aRemainingTime
             , String aShotTime
     ) {
@@ -36,6 +76,30 @@ public class HpActionLineup extends HpActionBase {
         mTeamAway = aTeamAway;
         mRemainingTime = aRemainingTime;
         mShotTime = aShotTime;
+
+        mPlayerHomeName1 = aPlayerHomeName1;
+        mPlayerHomeName2 = aPlayerHomeName2;
+        mPlayerHomeName3 = aPlayerHomeName3;
+        mPlayerHomeName4 = aPlayerHomeName4;
+        mPlayerHomeName5 = aPlayerHomeName5;
+
+        mPlayerHomeNumber1 = aPlayerHomeNumber1;
+        mPlayerHomeNumber2 = aPlayerHomeNumber2;
+        mPlayerHomeNumber3 = aPlayerHomeNumber3;
+        mPlayerHomeNumber4 = aPlayerHomeNumber4;
+        mPlayerHomeNumber5 = aPlayerHomeNumber5;
+
+        mPlayerAwayName1 = aPlayerAwayName1;
+        mPlayerAwayName2 = aPlayerAwayName2;
+        mPlayerAwayName3 = aPlayerAwayName3;
+        mPlayerAwayName4 = aPlayerAwayName4;
+        mPlayerAwayName5 = aPlayerAwayName5;
+
+        mPlayerAwayNumber1 = aPlayerAwayNumber1;
+        mPlayerAwayNumber2 = aPlayerAwayNumber2;
+        mPlayerAwayNumber3 = aPlayerAwayNumber3;
+        mPlayerAwayNumber4 = aPlayerAwayNumber4;
+        mPlayerAwayNumber5 = aPlayerAwayNumber5;
     }
 
     @Override
@@ -62,10 +126,17 @@ public class HpActionLineup extends HpActionBase {
         HpGameManager.get().getTeamHome().setName(mTeamHome);
         HpGameManager.get().getTeamAway().setName(mTeamAway);
 
-        HpGameManager.get().getTeamHome().addPlayer(new HpPlayer(0, mTeamHome, mTeamHome));
+        HpGameManager.get().getTeamHome().addPlayer(new HpPlayer(0, mPlayerHomeName1, mPlayerHomeNumber1));
+        HpGameManager.get().getTeamHome().addPlayer(new HpPlayer(1, mPlayerHomeName2, mPlayerHomeNumber2));
+        HpGameManager.get().getTeamHome().addPlayer(new HpPlayer(2, mPlayerHomeName3, mPlayerHomeNumber3));
+        HpGameManager.get().getTeamHome().addPlayer(new HpPlayer(3, mPlayerHomeName4, mPlayerHomeNumber4));
+        HpGameManager.get().getTeamHome().addPlayer(new HpPlayer(4, mPlayerHomeName5, mPlayerHomeNumber5));
 
-
-        HpGameManager.get().getTeamAway().addPlayer(new HpPlayer(0, mTeamAway, mTeamAway));
+        HpGameManager.get().getTeamAway().addPlayer(new HpPlayer(0, mPlayerAwayName1, mPlayerAwayNumber1));
+        HpGameManager.get().getTeamAway().addPlayer(new HpPlayer(1, mPlayerAwayName2, mPlayerAwayNumber2));
+        HpGameManager.get().getTeamAway().addPlayer(new HpPlayer(2, mPlayerAwayName3, mPlayerAwayNumber3));
+        HpGameManager.get().getTeamAway().addPlayer(new HpPlayer(3, mPlayerAwayName4, mPlayerAwayNumber4));
+        HpGameManager.get().getTeamAway().addPlayer(new HpPlayer(4, mPlayerAwayName5, mPlayerAwayNumber5));
 
 
         return true;
@@ -84,6 +155,26 @@ public class HpActionLineup extends HpActionBase {
 //        aState.setGameDate(mGameDate);
         aState.setTeamHome(mTeamHome);
         aState.setTeamAway(mTeamAway);
+        aState.setPlayerHomeName1(mPlayerHomeName1);
+        aState.setPlayerHomeName2(mPlayerHomeName2);
+        aState.setPlayerHomeName3(mPlayerHomeName3);
+        aState.setPlayerHomeName4(mPlayerHomeName4);
+        aState.setPlayerHomeName5(mPlayerHomeName5);
+        aState.setPlayerHomeNumber1(mPlayerHomeNumber1);
+        aState.setPlayerHomeNumber2(mPlayerHomeNumber2);
+        aState.setPlayerHomeNumber3(mPlayerHomeNumber3);
+        aState.setPlayerHomeNumber4(mPlayerHomeNumber4);
+        aState.setPlayerHomeNumber5(mPlayerHomeNumber5);
+        aState.setPlayerAwayName1(mPlayerAwayName1);
+        aState.setPlayerAwayName2(mPlayerAwayName2);
+        aState.setPlayerAwayName3(mPlayerAwayName3);
+        aState.setPlayerAwayName4(mPlayerAwayName4);
+        aState.setPlayerAwayName5(mPlayerAwayName5);
+        aState.setPlayerAwayNumber1(mPlayerAwayNumber1);
+        aState.setPlayerAwayNumber2(mPlayerAwayNumber2);
+        aState.setPlayerAwayNumber3(mPlayerAwayNumber3);
+        aState.setPlayerAwayNumber4(mPlayerAwayNumber4);
+        aState.setPlayerAwayNumber5(mPlayerAwayNumber5);
 
 //        aState.setPeriod("1");
         aState.setScoreAway("");
@@ -152,6 +243,86 @@ public class HpActionLineup extends HpActionBase {
 
     public void setmTeamAway(String mTeamAway) {
         this.mTeamAway = mTeamAway;
+    }
+
+    public String getmPlayerAwayName1() {
+        return mPlayerAwayName1;
+    }
+
+    public void setmPlayerAwayName1(String mPlayerAwayName1) {
+        this.mPlayerAwayName1 = mPlayerAwayName1;
+    }
+
+    public String getmPlayerAwayName2() {
+        return mPlayerAwayName2;
+    }
+
+    public void setmPlayerAwayName2(String mPlayerAwayName2) {
+        this.mPlayerAwayName2 = mPlayerAwayName2;
+    }
+
+    public String getmPlayerAwayName3() {
+        return mPlayerAwayName3;
+    }
+
+    public void setmPlayerAwayName3(String mPlayerAwayName3) {
+        this.mPlayerAwayName3 = mPlayerAwayName3;
+    }
+
+    public String getmPlayerAwayName4() {
+        return mPlayerAwayName4;
+    }
+
+    public void setmPlayerAwayName4(String mPlayerAwayName4) {
+        this.mPlayerAwayName4 = mPlayerAwayName4;
+    }
+
+    public String getmPlayerAwayName5() {
+        return mPlayerAwayName5;
+    }
+
+    public void setmPlayerAwayName5(String mPlayerAwayName5) {
+        this.mPlayerAwayName5 = mPlayerAwayName5;
+    }
+
+    public String getmPlayerHomeName1() {
+        return mPlayerHomeName1;
+    }
+
+    public void setmPlayerHomeName1(String mPlayerHomeName1) {
+        this.mPlayerHomeName1 = mPlayerHomeName1;
+    }
+
+    public String getmPlayerHomeName2() {
+        return mPlayerHomeName2;
+    }
+
+    public void setmPlayerHomeName2(String mPlayerHomeName2) {
+        this.mPlayerHomeName2 = mPlayerHomeName2;
+    }
+
+    public String getmPlayerHomeName3() {
+        return mPlayerHomeName3;
+    }
+
+    public void setmPlayerHomeName3(String mPlayerHomeName3) {
+        this.mPlayerHomeName3 = mPlayerHomeName3;
+    }
+
+    public String getmPlayerHomeName4() {
+        return mPlayerHomeName4;
+    }
+
+    public void setmPlayerHomeName4(String mPlayerHomeName4) {
+        this.mPlayerHomeName4 = mPlayerHomeName4;
+    }
+
+    public String getmPlayerHomeName5() {
+        return mPlayerHomeName5;
+    }
+
+    public void setmPlayerHomeName5(String mPlayerHomeName5) {
+        this.mPlayerHomeName5 = mPlayerHomeName5;
     }
 
 

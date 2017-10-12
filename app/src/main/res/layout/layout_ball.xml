@@ -7,9 +7,8 @@
 
     <ImageView
         android:id="@+id/image_ball"
-        android:layout_width="20dp"
+        android:layout_width="38sp"
         android:layout_height="wrap_content"
-        android:src="@drawable/playball_ball"
-        />
+        android:src="@drawable/playball_ball" />
 
 </LinearLayout>

@@ -13,292 +13,13 @@
     android:orientation="vertical"
     android:weightSum="1">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="#d9d9d9"
-        android:orientation="horizontal"></LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="#d9d9d9"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="5dp"
-            android:layout_height="match_parent"
-            android:background="#d9d9d9"
-            android:orientation="vertical"></LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#d9d9d9"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button_undo"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:background="@drawable/undo_button"
-                android:text="UNDO"
-                android:textColor="#262626"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="5dp"
-            android:layout_height="match_parent"
-            android:background="#d9d9d9"
-            android:orientation="vertical"></LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="#d9d9d9"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button_whistle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@drawable/whistle_button"
-                android:text="Whistle"
-                android:textColor="#262626"
-                android:textSize="17sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="5dp"
-            android:layout_height="match_parent"
-            android:background="#d9d9d9"
-            android:orientation="vertical"></LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="5dp"
-        android:background="#d9d9d9"
-        android:orientation="horizontal"></LinearLayout>
-
     <RelativeLayout
         android:id="@+id/layout_Top"
         android:layout_width="match_parent"
-        android:layout_height="106dp"
+        android:layout_height="20dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
-
-        <RelativeLayout
-            android:id="@+id/layout_top1"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="#e6e6e6">
-
-            <LinearLayout
-                android:id="@+id/HomeLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:background="#e6e6e6"
-                android:gravity="left"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/layout_home_team_foul"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:background="#e6e6e6"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView14"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="TeamFoul"
-                        android:textColor="#262626"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/text_home_foul"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="#262626"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:background="#e6e6e6">
-
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:id="@+id/layout_shot_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:background="#e6e6e6"
-                    android:orientation="vertical"
-                    android:paddingLeft="0dp">
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="ShotClock"
-                        android:textColor="#262626"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/text_shot_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="24"
-                        android:textColor="#262626"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/AwayLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/textView3"
-                android:layout_toRightOf="@+id/textView3"
-                android:background="#e6e6e6"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:id="@+id/layout_game_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:paddingRight="20dp">
-
-                    <TextView
-                        android:id="@+id/textView19"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="TIME"
-                        android:textColor="#262626"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/text_game_time"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="00:00"
-                        android:textColor="#262626"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent">
-
-                </RelativeLayout>
-
-                <LinearLayout
-                    android:id="@+id/layout_away_team_foul"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="5dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView17"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="TeamFoul"
-                        android:textColor="#262626"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/text_away_foul"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="0"
-                        android:textColor="#262626"
-                        android:textSize="13sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/top2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_centerInParent="false"
-                android:layout_weight="0.05"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="false"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Quarter"
-                    android:textColor="#262626"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/quarterText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textView3"
-                    android:layout_centerHorizontal="true"
-                    android:text="1"
-                    android:textColor="#262626"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-        </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/layout_top2"
@@ -310,53 +31,12 @@
             android:background="#e6e6e6"
             android:orientation="horizontal">
 
-            <LinearLayout
-                android:id="@+id/HomeName_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.05"
-                android:gravity="left"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/text_home_team_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="1"
-                    android:text="TeamName"
-                    android:textColor="#262626"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/AwayName_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="0.05"
-                android:gravity="right"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/text_away_team_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="TeamName"
-                    android:textColor="#262626"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
         </LinearLayout>
 
         <RelativeLayout
             android:id="@+id/layout_top3"
             android:layout_width="match_parent"
-            android:layout_height="35dp"
+            android:layout_height="25dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -374,25 +54,69 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
+                <Button
+                    android:id="@+id/button_undo"
+                    android:layout_width="90dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/undoBtn"
+                    android:layout_weight="0.03"
+                    android:background="@drawable/undo_button"
+                    android:text="UNDO"
+                    android:textColor="#262626"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/text_home_team_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="15sp"
                     android:layout_weight="0.03"
                     android:gravity="center"
-                    android:text="HomeScore :     "
+                    android:text="HomeName :"
                     android:textColor="#262626"
                     android:textStyle="bold" />
 
                 <Button
                     android:id="@+id/button_home_score"
-                    android:layout_width="60dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="15sp"
                     android:background="@drawable/score_button"
                     android:gravity="center"
                     android:text="0"
                     android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/layout_home_team_foul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="0.29"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="83dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="TeamFoul : "
+                        android:textColor="#262626"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/text_home_foul"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="#262626"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -432,10 +156,40 @@
                 android:gravity="right|center"
                 android:orientation="horizontal">
 
+                <LinearLayout
+                    android:id="@+id/layout_away_team_foul"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/text_away_foul"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="#262626"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="83dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text=" : TeamFoul"
+                        android:textColor="#262626"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
                 <Button
                     android:id="@+id/button_away_score"
-                    android:layout_width="60dp"
+                    android:layout_width="40dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="15sp"
                     android:layout_weight="1"
                     android:background="@drawable/score_button"
                     android:gravity="center"
@@ -443,14 +197,28 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/text_away_team_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="15sp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="      : AwayScore"
+                    android:text=": AwayName"
                     android:textColor="#262626"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/button_whistle"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/undoBtn"
+                    android:layout_weight="1"
+                    android:background="@drawable/whistle_button"
+                    android:text="Whistle"
+                    android:textColor="#262626"
+                    android:textSize="17sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -461,132 +229,391 @@
     <RelativeLayout
         android:id="@+id/layout_Bottom"
         android:layout_width="match_parent"
-        android:layout_height="300dp">
+        android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:id="@+id/layout_court"
+        <LinearLayout
+            android:id="@+id/hpme_player_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/layout_home_player1"
-            android:layout_toRightOf="@+id/layout_home_player1">
+            android:layout_toLeftOf="@+id/layout_court"
+            android:layout_toStartOf="@+id/layout_court"
+            android:orientation="vertical">
 
-            <HorizontalScrollView
-                android:id="@+id/scroll_Court"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/layout_home_player1"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:orientation="horizontal">
 
-                <LinearLayout
+                <include
+                    android:id="@+id/layout_home_uniform1"
+                    layout="@layout/layout_uniform"
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentTop="true" />
+
+                <include
+                    android:id="@+id/layout_home_ball1"
+                    layout="@layout/layout_ball"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_weight="0.23" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_home_player2"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_marginTop="5sp"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/layout_home_uniform2"
+                    layout="@layout/layout_uniform"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/layout_home_ball2"
+                    layout="@layout/layout_ball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_home_player3"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_marginTop="5sp"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/layout_home_uniform3"
+                    layout="@layout/layout_uniform"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/layout_home_ball3"
+                    layout="@layout/layout_ball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_home_player4"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_marginTop="5sp"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/layout_home_uniform4"
+                    layout="@layout/layout_uniform"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/layout_home_ball4"
+                    layout="@layout/layout_ball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_home_player5"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_marginTop="5sp"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/layout_home_uniform5"
+                    layout="@layout/layout_uniform"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <include
+                    android:id="@+id/layout_home_ball5"
+                    layout="@layout/layout_ball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/away_player_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toEndOf="@+id/layout_court"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/layout_away_player1"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_gravity="right"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/layout_away_ball1"
+                    layout="@layout/layout_ball"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <include
+                    android:id="@+id/layout_away_uniform1"
+                    layout="@layout/layout_uniform"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_away_player2"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="5sp"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/layout_away_ball2"
+                    layout="@layout/layout_ball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/layout_away_uniform2"
+                    layout="@layout/layout_uniform"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_away_player3"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="5sp"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/layout_away_ball3"
+                    layout="@layout/layout_ball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/layout_away_uniform3"
+                    layout="@layout/layout_uniform"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_away_player4"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="5sp"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/layout_away_ball4"
+                    layout="@layout/layout_ball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/layout_away_uniform4"
+                    layout="@layout/layout_uniform"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_away_player5"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:layout_gravity="right"
+                android:layout_marginTop="5sp"
+                android:orientation="horizontal">
+
+                <include
+                    android:id="@+id/layout_away_ball5"
+                    layout="@layout/layout_ball"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    android:id="@+id/layout_away_uniform5"
+                    layout="@layout/layout_uniform"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="440dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/relativeLayout">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:id="@+id/layout_court"
+                    android:layout_width="420dp"
+                    android:layout_height="270dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true">
+
+                    <HorizontalScrollView
+                        android:id="@+id/scroll_Court"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/image_court"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@android:color/background_light"
+                                android:scaleType="fitXY"
+                                app:srcCompat="@drawable/basketball_court_only" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
 
                     <ImageView
-                        android:id="@+id/image_court"
-                        android:layout_width="590dp"
+                        android:id="@+id/image_event"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_notifications_black_24dp"
+                        android:visibility="visible" />
+
+                    <TextView
+                        android:id="@+id/textDebugLeft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginTop="50dp"
+                        android:text="abc"
+                        android:textColor="#0000FF" />
+
+                    <TextView
+                        android:id="@+id/textDebugRight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="50dp"
+                        android:text="abc"
+                        android:textColor="#0000FF" />
+
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/shotclock_time_layout"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/shotclock_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@android:color/background_light"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/basketball_court_only" />
+                        android:layout_marginLeft="20sp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="shotclock :"
+                        android:textColor="#262626"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/text_shot_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="24"
+                        android:textColor="#262626"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
-            </HorizontalScrollView>
 
-            <ImageView
-                android:id="@+id/image_event"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:src="@drawable/ic_notifications_black_24dp"
-                android:visibility="visible" />
+                <LinearLayout
+                    android:id="@+id/game_time_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textDebugLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_marginTop="50dp"
-                android:text="abc"
-                android:textColor="#0000FF" />
+                    <TextView
+                        android:id="@+id/text_game_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="00:00"
+                        android:textColor="#262626"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textDebugRight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="50dp"
-                android:text="abc"
-                android:textColor="#0000FF" />
+                    <TextView
+                        android:id="@+id/textView10"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text=": TIME"
+                        android:textColor="#262626"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#d9d9d9"
-        android:orientation="horizontal"
-        android:weightSum="1">
-
-        <RelativeLayout
-            android:id="@+id/layout_home_player1"
-            android:layout_width="60dp"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="78dp"
-            android:layout_marginStart="78dp"
-            android:layout_toEndOf="@+id/layout_home_uniform1"
-            android:layout_toRightOf="@+id/layout_home_uniform1"
-            android:background="#d9d9d9"
-            android:gravity="left">
-
-            <include
-                android:id="@+id/layout_home_uniform1"
-                layout="@layout/layout_uniform"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_weight="1" />
-
-            <include
-                android:id="@+id/layout_home_ball1"
-                layout="@layout/layout_ball"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:layout_weight="1" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/layout_away_player1"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_toLeftOf="@+id/textDebugRight"
-            android:layout_toStartOf="@+id/textDebugRight"
-            android:layout_weight="0.71"
-            android:background="#d9d9d9"
-            android:gravity="right">
-
-            <include
-                android:id="@+id/layout_away_uniform1"
-                layout="@layout/layout_uniform"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <include
-                android:id="@+id/layout_away_ball1"
-                layout="@layout/layout_ball"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-        </RelativeLayout>
-    </LinearLayout>
 
 </LinearLayout>

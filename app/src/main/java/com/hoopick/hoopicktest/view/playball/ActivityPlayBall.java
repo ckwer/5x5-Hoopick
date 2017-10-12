@@ -82,7 +82,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     private static final int REQUEST_ENABLE_BT = 2;
 
     public static final int MAX_TEAM = 2;
-    public static final int MAX_PLAYER = 1;
+    public static final int MAX_PLAYER = 5;
 
     private AlertDialog mAlertDialog = null;
     private final int REQUEST_CODE_START_ACTIVITY = 1;
@@ -155,7 +155,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     }
 
     private void bindLayout(){
-        mTextEndQuater = (TextView)findViewById(R.id.quarterText);
+
         mImageCourt = (ImageView) findViewById(R.id.image_court);
         mImageEvent = (ImageView) findViewById(R.id.image_event);
         mScrollCourt = (HorizontalScrollView) findViewById(R.id.scroll_Court);
@@ -173,12 +173,51 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
         mViewPlayer[0][0].setOnClickListener(mOnClickPlayer);
         mViewPlayer[0][0].setTag(HpGameManager.get().findPlayerBySlot(0, 0));
 
+        // HomePlayer2
+        mViewPlayer[0][1] = findViewById(R.id.layout_home_player2);
+        mViewPlayer[0][1].setOnClickListener(mOnClickPlayer);
+        mViewPlayer[0][1].setTag(HpGameManager.get().findPlayerBySlot(0, 1));
+
+        // HomePlayer3
+        mViewPlayer[0][2] = findViewById(R.id.layout_home_player3);
+        mViewPlayer[0][2].setOnClickListener(mOnClickPlayer);
+        mViewPlayer[0][2].setTag(HpGameManager.get().findPlayerBySlot(0, 2));
+
+        // HomePlayer4
+        mViewPlayer[0][3] = findViewById(R.id.layout_home_player4);
+        mViewPlayer[0][3].setOnClickListener(mOnClickPlayer);
+        mViewPlayer[0][3].setTag(HpGameManager.get().findPlayerBySlot(0, 3));
+
+        // HomePlayer5
+        mViewPlayer[0][4] = findViewById(R.id.layout_home_player5);
+        mViewPlayer[0][4].setOnClickListener(mOnClickPlayer);
+        mViewPlayer[0][4].setTag(HpGameManager.get().findPlayerBySlot(0, 4));
 
 
         // AwayPlayer1
         mViewPlayer[1][0] = findViewById(R.id.layout_away_player1);
         mViewPlayer[1][0].setOnClickListener(mOnClickPlayer);
         mViewPlayer[1][0].setTag(HpGameManager.get().findPlayerBySlot(1, 0));
+
+        // AwayPlayer2
+        mViewPlayer[1][1] = findViewById(R.id.layout_away_player2);
+        mViewPlayer[1][1].setOnClickListener(mOnClickPlayer);
+        mViewPlayer[1][1].setTag(HpGameManager.get().findPlayerBySlot(1, 1));
+
+        // AwayPlayer3
+        mViewPlayer[1][2] = findViewById(R.id.layout_away_player3);
+        mViewPlayer[1][2].setOnClickListener(mOnClickPlayer);
+        mViewPlayer[1][2].setTag(HpGameManager.get().findPlayerBySlot(1, 2));
+
+        // AwayPlayer4
+        mViewPlayer[1][3] = findViewById(R.id.layout_away_player4);
+        mViewPlayer[1][3].setOnClickListener(mOnClickPlayer);
+        mViewPlayer[1][3].setTag(HpGameManager.get().findPlayerBySlot(1, 3));
+
+        // AwayPlayer5
+        mViewPlayer[1][4] = findViewById(R.id.layout_away_player5);
+        mViewPlayer[1][4].setOnClickListener(mOnClickPlayer);
+        mViewPlayer[1][4].setTag(HpGameManager.get().findPlayerBySlot(1, 4));
 
 
         // whistle
@@ -280,7 +319,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     }
 
     private interface PlayerView {
-        void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName,ImageView aImageBall);
+        void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName,TextView aTextNumber,ImageView aImageBall);
 
     }
 
@@ -292,9 +331,10 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                 View lViewPlayer = mViewPlayer[n][k];
                 HpPlayer lPlayer = (HpPlayer) lViewPlayer.getTag();
                 TextView lTextName = (TextView) lViewPlayer.findViewById(R.id.text_player_name);
+                TextView lTextNumber = (TextView) lViewPlayer.findViewById(R.id.text_player_number);
                 ImageView lImageBall = (ImageView) lViewPlayer.findViewById(R.id.image_ball);
 
-                aPlayerView.run(lPlayer, lViewPlayer,lTextName, lImageBall);
+                aPlayerView.run(lPlayer, lViewPlayer, lTextName, lTextNumber, lImageBall);
             }
         }
 
@@ -303,8 +343,9 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
         each(new PlayerView() {
             @Override
-            public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName, ImageView aImageBall) {
+            public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName,TextView aTextNumber, ImageView aImageBall) {
                 aTextName.setText(aPlayer.getName());
+                aTextNumber.setText(aPlayer.getNumber());
                 aImageBall.setVisibility(View.INVISIBLE);
             }
         });
@@ -738,9 +779,13 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                         lDialog.show();
 
                         break;
+                    case DialogWhistle.MENU_MAIN_SUBSTITUTION:
 
+                        Intent lIntent = new Intent(ActivityPlayBall.this, ActivitySubstitution.class);
+                        // lIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        ActivityPlayBall.this.startActivity(lIntent);
 
-
+                        break;
                     case DialogWhistle.MENU_SUB_VIOLATION_SHOT_CLOCK:
                         try {
                             new HpActionViolation(getContext(), HpActionViolation.VIOLATION_SHOT_CLOCK).execute();
@@ -887,9 +932,10 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
             } else if (event.getAction() == MotionEvent.ACTION_UP) {
 
                 String HomeTeamSelect = HpGameManager.get().getTeamHome().getName();
-                if(lPlayerSelect.getName() == HomeTeamSelect ) {
+                String AwayTeamSelect = HpGameManager.get().getTeamAway().getName();
+                if(lPlayerSelect.getName() == lPlayerSelect.getName() && HomeTeamSelect == lPlayerSelect.getParentTeam().getName()) {
 
-                    mImageEvent.setX(event.getX()-520);
+                    mImageEvent.setX(event.getX()-410);
                     mImageEvent.setY(event.getY()-20);
 
                     int lPosX = (int) (event.getX() * 20000 / view.getWidth());
@@ -903,7 +949,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
                     doShot(lPointScore, lPosX, lPosY, lDistance);
                 }
-                else{
+                else if(lPlayerSelect.getName() == lPlayerSelect.getName() && AwayTeamSelect == lPlayerSelect.getParentTeam().getName()){
 
                     mImageEvent.setX(event.getX()-20);
                     mImageEvent.setY(event.getY()-20);
@@ -976,7 +1022,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
             each(new PlayerView() {
                 @Override
-                public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName, ImageView aImageBall) {
+                public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName,TextView aTextNumber, ImageView aImageBall) {
 
                     if (aView.getId() == aViewPlayer.getId()) {
 
@@ -986,9 +1032,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                             String HomeTeamSelect = HpGameManager.get().getTeamHome().getName();
                             String AwayTeamSelect = HpGameManager.get().getTeamAway().getName();
                             final HpPlayer lPlayerSelect = HpGameManager.get().getBall().getGrabbedPlayer();
-                            if(lPlayerSelect.getName() == HomeTeamSelect ) {
-
-
+                            if(lPlayerSelect.getName() == lPlayerSelect.getName() && HomeTeamSelect == lPlayerSelect.getParentTeam().getName() ) {
                                     mScrollCourt.smoothScrollTo(1500, 0);
                                     mScrollCourt.setOnTouchListener(new OnTouchListener() {
                                         @Override
@@ -1000,8 +1044,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
                                 HpGameManager.get().getGameEventListener().onShotClockChicagoMusic_stop(); //턴 오버시 시카고불스 음악 멈춤
 
                             }
-                            else if(lPlayerSelect.getName() == AwayTeamSelect ){
-
+                            else if(lPlayerSelect.getName() == lPlayerSelect.getName() && AwayTeamSelect == lPlayerSelect.getParentTeam().getName()){
 
                                 mScrollCourt.smoothScrollTo(0, 0);
                                 mScrollCourt.setOnTouchListener(new OnTouchListener() {
@@ -1035,7 +1078,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
         each(new PlayerView() {
             @Override
-            public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName, ImageView aImageBall) {
+            public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName,TextView aTextNumber, ImageView aImageBall) {
 
                 if (aPlayer == HpGameManager.get().getBall().getGrabbedPlayer()) {
                     aImageBall.setVisibility(View.VISIBLE);
@@ -1256,7 +1299,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
     private void setVisibleAllPlayer(final int aVisiblity) {
         each(new PlayerView() {
             @Override
-            public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName,ImageView aImageBall) {
+            public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName,TextView aTextNumber,ImageView aImageBall) {
                 aViewPlayer.setVisibility(aVisiblity);
             }
         });
@@ -1326,7 +1369,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
             each(new PlayerView() {
                 @Override
-                public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName, ImageView aImageBall) {
+                public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName,TextView aTextNumber, ImageView aImageBall) {
                     aViewPlayer.setVisibility(View.VISIBLE);
                 }
             });
@@ -1387,7 +1430,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
             each(new PlayerView() {
                 @Override
-                public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName, ImageView aImageBall) {
+                public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName,TextView aTextNumber, ImageView aImageBall) {
                     aViewPlayer.setVisibility(View.VISIBLE);
                 }
             });
@@ -1402,7 +1445,7 @@ public class ActivityPlayBall extends AppCompatActivity implements HpGameEventLi
 
         each(new PlayerView() {
             @Override
-            public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName, ImageView aImageBall) {
+            public void run(HpPlayer aPlayer, View aViewPlayer,TextView aTextName,TextView aTextNumber, ImageView aImageBall) {
                 aViewPlayer.setVisibility(View.VISIBLE);
             }
         });

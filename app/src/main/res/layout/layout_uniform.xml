@@ -1,57 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        >
+        android:layout_gravity="center">
 
         <ImageView
-            android:layout_width="40dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitCenter"
-            android:src="@drawable/playball_uniform_yellow"
-            />
+            android:src="@drawable/playball_uniform_yellow" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_marginTop="15dp"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/text_player_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textSize="12sp"
                 android:text="홍길동"
-                />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/text_player_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textSize="26sp"
                 android:text="16"
-                />
+                android:textSize="16sp" />
 
         </LinearLayout>
 
 
-
     </RelativeLayout>
-
 
 
 </LinearLayout>
