@@ -8,18 +8,18 @@ public class CoordUtil {
     /**
      * 좌표를 가지고 1점 또는 2점을 리턴한다. (3:3에서는 1점, 2점)
      * 농구장의 크기는 반코트
-     * 가로 크기 10000, 세로 크기 10000로 기준
-     * @param aPosX x/10000 (ex:5000 = 50%)
+     * 가로 크기 12000, 세로 크기 10000로 기준
+     * @param aPosX x/12000 (ex:6000 = 50%)
      * @param aPosY y/10000 (ex: 100 = 1%)
      * @return
      */
-    public static int pointScoreInHalf(int aCenterX, int aCenterY, int a2PtX, int a2PtY, int aPosX, int aPosY) {
+    public static int pointScoreInHalf(int aCenterX, int aCenterY, int a3PtX, int a3PtY, int aPosX, int aPosY) {
 
         int lPointScore = 3;
 
-        if (aPosX < 1000) {
+        if (aPosY < 10) {
 
-            if ( (aPosY > 1200) && (aPosY < 8800) ) {
+            if ( (aPosY > 8) && (aPosY < 42) ) {
                 lPointScore = 2;
             }
 
@@ -28,15 +28,15 @@ public class CoordUtil {
 
             int lGoalX = aCenterX;
             int lGoalY = aCenterY;
-            int lCenterXDelta = 400;
+            int lCenterXDelta = 5;
 
-            int l2PtX = a2PtX;
-            int l2PtY = a2PtY;
+            int l3PtX = a3PtX;
+            int l3PtY = a3PtY;
 
             // 골대 지점
-            int lDistance2Pt = getDistance(lGoalX, lGoalY, l2PtX, l2PtY);
+            int lDistance2Pt = getDistance(lGoalX, lGoalY, l3PtX, l3PtY);
 
-            if (aPosX < 5000) {
+            if (aPosY < 25 ) {
 
                 int lCenterLeftX = lGoalX + lCenterXDelta;
                 int lCenterLeftY = lGoalY;
